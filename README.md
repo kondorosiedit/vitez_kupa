@@ -1,0 +1,1 @@
+vitéz kupa használata
