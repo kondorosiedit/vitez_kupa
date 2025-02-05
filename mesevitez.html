@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesevitéz</title>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        table {
+            border: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h2 {
+            color: #ff0000;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        /* Modális ablak */
+        .modal {
+            display: none; /* Kezdetben rejtve */
+            position: fixed;
+            z-index: 1000; /* Legfelső réteg */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Áttetsző háttér */
+            display: flex;
+            align-items: center;  /* Középre igazítás függőlegesen */
+            justify-content: center;  /* Középre igazítás vízszintesen */
+        }
+
+        /* Kép a modális ablakban */
+        .modal-content {
+            max-width: 80vw; /* Maximális szélesség */
+            max-height: 80vh; /* Maximális magasság */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Bezárás gomb */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modal = document.getElementById("qrModal");
+            var modalImg = document.getElementById("modalImg");
+            var qrCode = document.getElementById("qrCode");
+            var qrCodeLabdak = document.getElementById("qrCodeLabdak");
+            var closeBtn = document.getElementsByClassName("close")[0];
+
+            // Kezdetben a modális ablak nem látszik
+            modal.style.display = "none";  // Biztosítjuk, hogy kezdetben rejtve legyen
+
+            // QR-kódra kattintva megnyitja a modált (Öreg pap QR-kód)
+            qrCode.addEventListener("click", function () {
+                modal.style.display = "flex";  // Flexbox, hogy középre kerüljön
+                modalImg.src = this.src;  // Beállítja a képet a modálban
+            });
+
+            // QR-kódra kattintva megnyitja a modált (Labdák QR-kód)
+            qrCodeLabdak.addEventListener("click", function () {
+                modal.style.display = "flex";  // Flexbox, hogy középre kerüljön
+                modalImg.src = this.src;  // Beállítja a képet a modálban
+            });
+
+            // Bezárás gombra kattintva bezárja a modált
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";  // Bezárja a modált
+            });
+
+            // Ha a háttérre kattintanak, bezárja a modált
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";  // Bezárja a modált
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <img src="kep2.png" alt="Vitéz Kupa">
+            </td>
+            <td>
+                <h2>Induljon a Mesevitéz kupa!</h2>
+                <p><a href="https://forms.office.com/e/q1SPuQUAxB?origin=lprLink" target="_blank">5-6. évfolyam - forms</a></p>   
+                <hr>             
+                <p><a href="https://forms.office.com/e/SHUcjYEr7e?origin=lprLink" target="_blank">7-8. évfolyam - forms</a></p>
+                <hr>
+                <p><a href="https://forms.office.com/e/LcryA2pV6X?origin=lprLink" target="_blank">9-10. évfolyam - forms </a></p>
+                <p><a href="öreg pap.pdf" target="_blank">Öreg pap - szöveg a teszthez</a></p>
+                <p>QR kód a szöveghez</p>
+
+                <!-- QR-kód - Öreg pap -->
+                <p>
+                    <img id="qrCode" src="oregpap.png" alt="Öreg pap QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+                
+                
+            
+                <!-- Lightbox modal -->
+                <div id="qrModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="modalImg">
+                </div>
+                <hr>
+                <p><a href="https://forms.office.com/e/FjHHMtDx7g?origin=lprLink" target="_blank">11-12. évfolyam - forms</a></p>
+                <p><a href="labdak.pdf" target="_blank">Labdák és csillagok - szöveg a teszthez</a></p>
+                <p>QR kód a szöveghez</p>
+                <!-- QR-kód - Labdák -->
+                <p>
+                    <img id="qrCodeLabdak" src="labdak.png" alt="Labdák QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
