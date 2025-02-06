@@ -45,21 +45,20 @@
         .modal {
             display: none; /* Kezdetben rejtve */
             position: fixed;
-            z-index: 1000; /* Legfelső réteg */
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Áttetsző háttér */
-            display: flex;
-            align-items: center;  /* Középre igazítás függőlegesen */
-            justify-content: center;  /* Középre igazítás vízszintesen */
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
         }
 
         /* Kép a modális ablakban */
         .modal-content {
-            max-width: 80vw; /* Maximális szélesség */
-            max-height: 80vh; /* Maximális magasság */
+            max-width: 80vw;
+            max-height: 80vh;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
@@ -74,45 +73,7 @@
             cursor: pointer;
         }
     </style>
-
-    <script defer>
-        document.addEventListener("DOMContentLoaded", function () {
-            var modal = document.getElementById("qrModal");
-            var modalImg = document.getElementById("modalImg");
-            var qrCode = document.getElementById("qrCode");
-            var qrCodeLabdak = document.getElementById("qrCodeLabdak");
-            var closeBtn = document.getElementsByClassName("close")[0];
-
-            // Kezdetben a modális ablak nem látszik
-            modal.style.display = "none";  // Biztosítjuk, hogy kezdetben rejtve legyen
-
-            // QR-kódra kattintva megnyitja a modált (Öreg pap QR-kód)
-            qrCode.addEventListener("click", function () {
-                modal.style.display = "flex";  // Flexbox, hogy középre kerüljön
-                modalImg.src = this.src;  // Beállítja a képet a modálban
-            });
-
-            // QR-kódra kattintva megnyitja a modált (Labdák QR-kód)
-            qrCodeLabdak.addEventListener("click", function () {
-                modal.style.display = "flex";  // Flexbox, hogy középre kerüljön
-                modalImg.src = this.src;  // Beállítja a képet a modálban
-            });
-
-            // Bezárás gombra kattintva bezárja a modált
-            closeBtn.addEventListener("click", function () {
-                modal.style.display = "none";  // Bezárja a modált
-            });
-
-            // Ha a háttérre kattintanak, bezárja a modált
-            modal.addEventListener("click", function (event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";  // Bezárja a modált
-                }
-            });
-        });
-    </script>
 </head>
-
 <body>
 
     <table>
@@ -122,38 +83,87 @@
             </td>
             <td>
                 <h2>Induljon a Mesevitéz kupa!</h2>
-                <p><a href="https://forms.office.com/e/q1SPuQUAxB?origin=lprLink" target="_blank">5-6. évfolyam - forms</a></p>   
-                <hr>             
-                <p><a href="https://forms.office.com/e/SHUcjYEr7e?origin=lprLink" target="_blank">7-8. évfolyam - forms</a></p>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/q1SPuQUAxB?origin=lprLink" target="_blank">5-6. évfolyam - forms</a>
+                    <img class="qrCode" src="mese56.png" alt="5-6. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
                 <hr>
-                <p><a href="https://forms.office.com/e/LcryA2pV6X?origin=lprLink" target="_blank">9-10. évfolyam - forms </a></p>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/SHUcjYEr7e?origin=lprLink" target="_blank">7-8. évfolyam - forms</a>
+                    <img class="qrCode" src="mese78.png" alt="7-8. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <hr>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/LcryA2pV6X?origin=lprLink" target="_blank">9-10. évfolyam - forms</a>
+                    <img class="qrCode" src="mese910.png" alt="9-10. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
                 <p><a href="öreg pap.pdf" target="_blank">Öreg pap - szöveg a teszthez</a></p>
                 <p>QR kód a szöveghez</p>
-
-                <!-- QR-kód - Öreg pap -->
                 <p>
-                    <img id="qrCode" src="oregpap.png" alt="Öreg pap QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                    <img class="qrCode" src="oregpap.png" alt="Öreg pap QR-kód" style="width: 150px; height: auto; cursor: pointer;">
                 </p>
-                
-                
-            
-                <!-- Lightbox modal -->
-                <div id="qrModal" class="modal">
-                    <span class="close">&times;</span>
-                    <img class="modal-content" id="modalImg">
-                </div>
+
                 <hr>
-                <p><a href="https://forms.office.com/e/FjHHMtDx7g?origin=lprLink" target="_blank">11-12. évfolyam - forms</a></p>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/FjHHMtDx7g?origin=lprLink" target="_blank">11-12. évfolyam - forms</a>
+                    <img class="qrCode" src="mese1112.png" alt="11-12. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
                 <p><a href="labdak.pdf" target="_blank">Labdák és csillagok - szöveg a teszthez</a></p>
                 <p>QR kód a szöveghez</p>
-                <!-- QR-kód - Labdák -->
                 <p>
-                    <img id="qrCodeLabdak" src="labdak.png" alt="Labdák QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                    <img class="qrCode" src="labdak.png" alt="Labdák QR-kód" style="width: 150px; height: auto; cursor: pointer;">
                 </p>
 
             </td>
         </tr>
     </table>
+
+    <!-- Egyetlen Lightbox modal -->
+    <div id="qrModal" class="modal">
+        <span id="closeModal" class="close">&times;</span>
+        <img class="modal-content" id="modalImg" src="">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modal = document.getElementById("qrModal");
+            var modalImg = document.getElementById("modalImg");
+            var closeBtn = document.getElementById("closeModal");
+
+            // Biztosítjuk, hogy a modális kezdetben rejtve legyen
+            modal.style.display = "none";
+
+            // Összes QR-kód kiválasztása
+            document.querySelectorAll(".qrCode").forEach(function(qr) {
+                qr.addEventListener("click", function () {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                });
+            });
+
+            // Bezárás gombra kattintva bezárja a modált
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+                modalImg.src = ""; // Képforrás ürítése, hogy ne jelenjen meg üresen
+            });
+
+            // Ha a háttérre kattintanak, bezárja a modált
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                    modalImg.src = ""; // Képforrás ürítése
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
