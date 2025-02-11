@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hősvitéz</title>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        table {
+            border: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h2 {
+            color: #ff0000;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        /* Modális ablak */
+        .modal {
+            display: none; /* Kezdetben rejtve */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Kép a modális ablakban */
+        .modal-content {
+            max-width: 80vw;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Bezárás gomb */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <img src="kep2.png" alt="Vitéz Kupa">
+            </td>
+            <td>
+                <h2>Induljon a Hősvitéz kupa!</h2>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/ar4VDS7tRz" target="_blank">5-6. évfolyam - forms</a>
+                    <img class="qrCode" src="hos56.png" alt="5-6. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <hr>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/qt01THf0ar" target="_blank">7-8. évfolyam - forms</a>
+                    <img class="qrCode" src="hos78.png" alt="7-8. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <p><a href="hosszoveg78gimi.pdf" target="_blank">szöveg a teszthez</a></p>
+                <p>QR kód a szöveghez</p>
+                <p>
+                    <img class="qrCode" src="hosszovegqr.png" alt="Labdák QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <hr>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/JChXf76DGy" target="_blank">9-10. évfolyam - forms</a>
+                    <img class="qrCode" src="hos9101112.png" alt="9-10. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <p><a href="hosszoveg78gimi.pdf" target="_blank">szöveg a teszthez</a></p>
+                <p>QR kód a szöveghez</p>
+                <p>
+                    <img class="qrCode" src="hosszovegqr.png" alt="Öreg pap QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <hr>
+
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    <a href="https://forms.office.com/e/JChXf76DGy" target="_blank">11-12. évfolyam - forms</a>
+                    <img class="qrCode" src="hos9101112.png" alt="11-12. évfolyam QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+                <p><a href="hosszoveg78gimi.pdf" target="_blank">szöveg a teszthez</a></p>
+                <p>QR kód a szöveghez</p>
+                <p>
+                    <img class="qrCode" src="hosszovegqr.png" alt="Labdák QR-kód" style="width: 150px; height: auto; cursor: pointer;">
+                </p>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- Egyetlen Lightbox modal -->
+    <div id="qrModal" class="modal">
+        <span id="closeModal" class="close">&times;</span>
+        <img class="modal-content" id="modalImg" src="">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modal = document.getElementById("qrModal");
+            var modalImg = document.getElementById("modalImg");
+            var closeBtn = document.getElementById("closeModal");
+
+            // Biztosítjuk, hogy a modális kezdetben rejtve legyen
+            modal.style.display = "none";
+
+            // Összes QR-kód kiválasztása
+            document.querySelectorAll(".qrCode").forEach(function(qr) {
+                qr.addEventListener("click", function () {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                });
+            });
+
+            // Bezárás gombra kattintva bezárja a modált
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+                modalImg.src = ""; // Képforrás ürítése, hogy ne jelenjen meg üresen
+            });
+
+            // Ha a háttérre kattintanak, bezárja a modált
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                    modalImg.src = ""; // Képforrás ürítése
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
